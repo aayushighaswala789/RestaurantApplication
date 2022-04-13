@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RestaurantApp.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" >
+            <div class="container">
+                <partial name="_CookieConsentPartial" />
+                <a class="text-center"><img src="https://media.istockphoto.com/vectors/restaurant-icon-spoon-and-fork-icon-vector-logo-design-template-vector-id1266885327?k=20&m=1266885327&s=170667a&w=0&h=ARItpw5eJeFvpotAFg8sZi7pD69f6AmtH0YV6gJNsls=" width="60" height="50" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" >
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Meals" asp-action="Index">Meals</a>
+                        </li>
+
+                        <li class="dropdown show">
+                            <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item nav-link" asp-area="" asp-controller="Chefs" asp-action="Index">Chefs</a>
+                                <a class="dropdown-item nav-link" asp-area="" asp-controller="Menus" asp-action="Index">Menus</a>
+                                <a class="dropdown-item nav-link" asp-area="" asp-controller="Orders" asp-action="Orders">Orders</a>
+                                <a class="dropdown-item nav-link" asp-area="" asp-controller="Vouchers" asp-action="Index">Voucher management</a>
+                                <a class="dropdown-item nav-link" asp-area="" asp-controller="Home" asp-action="Feedbacks"> Customer Feedbacks</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Statistics">Statistics</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MyOrders">MyOrders list</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+   
+    @*<footer class="bg-dark text-center text-white">
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright | This website is made by
+            <a class="text-white" href="https://www.bigscal.com/">bigscal.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
